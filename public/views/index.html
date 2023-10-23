@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý ảnh</title>
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../css/style.css">
+    <link type="text/css" rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../zTree_v3-master/css/zTreeStyle/zTreeStyle.css" type="text/css">
+</head>
+<body>
+    <main role="main" class="pb-3 h-100 w-100">
+        <div class="tree-navigation h-100 w-25 pl-2">
+            <div class="zTreeDemoBackground left">
+                <ul id="treeDemo" class="ztree"></ul>
+            </div>
+        </div>
+        <div class="images-container h-100 w-75">
+            <div class="hearder-images-container">
+                <div class="title-container">
+                    <h5 class="title">DANH SÁCH TỆP ẢNH ĐÃ TẢI LÊN</h5>
+                </div>
+                <div class="upload-container d-flex">
+                    <div class="upload-images">
+                        <label class="label">
+                            <form id="form-upload" action="/upload" method="POST" enctype="multipart/form-data"></form>
+                                <input type="file" required multiple="multiple" name="fileimage" id="fileimage" class="fileimage none" accept=".png,.jpg,.jpeg,.gif,.bmp,.svg" onchange="uploadFiles()"/>
+                                <span>Chọn tệp</span>
+                            </form>
+                        </label>                    
+                    </div>
+                    <div class="search-image d-flex">
+                        <input type="text" name="search" id="search" class="search" placeholder="Tìm kiếm ảnh">
+                        <button class="btn" id="btn-search">Tìm kiếm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="body-images-container">
+                <div class="images-count">
+                    <span class="count" id="count-images"></span>
+                </div>
+                <div class="images-grid-container d-flex align-content-start flex-wrap" id="images-container">
+                    <!-- <div class="file-box" id="image-box">
+                        <div class="fcheckbox">
+                            <input type="checkbox" name="checkbox" class="checkbox">
+                        </div>
+                    </div> -->
+
+                    
+                </div>
+                <div id="pagination-container"></div>
+            </div>
+        </div>
+        
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <script type='text/javascript' src='../js/jquery.min.js'></script>
+    
+  <script type="text/javascript" src="../zTree_v3-master/js/jquery.ztree.core.js"></script>
+  <script src="../js/socket.io-file-client.js"></script>
+    <script type='text/javascript' src='../js/pagination.js'></script>
+    <script type='text/javascript' src='../js/index.js'></script>
+
+</body>
+</html>

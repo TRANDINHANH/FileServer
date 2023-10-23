@@ -1,0 +1,158 @@
+body{
+    background-color: #f5f5f5;
+    font-family: "Times New Roman", Times, serif;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tree-navigation{
+    border-right: 1px solid #0d5da9;
+    overflow-y: auto;
+    margin-top: 20px;
+    margin-left: 20px;
+    justify-content: center;
+    
+}
+.images-container .title{
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.title{
+    border-bottom: 1px solid #0d5da9;   
+    color: #0a447a;
+}
+.hearder-images-container .upload-container{
+    margin-left: 10px;
+}
+.hearder-images-container .upload-container .upload-images {
+    width: 40%;
+}
+.hearder-images-container .upload-container .search-image{
+    width: 60%;
+}
+.hearder-images-container .upload-container .search-image input{
+    width: 70%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #0d5da9;
+    padding-left: 10px;
+}
+.hearder-images-container .upload-container .search-image button{
+    width: 25%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #0d5da9;
+    background-color: #0d5da9;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.hearder-images-container .upload-container .search-image button:hover{
+    background: #094379;
+}
+.hearder-images-container .upload-container .search-image button:active{
+    background: #9fa1a0;
+}
+.body-images-container .images-count{
+    border-top: 1px solid #93cafd;
+    border-bottom: 1px solid #93cafd;
+    background-color: #93cafd;
+    margin-top: 10px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.body-images-container .images-count .count{
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+  }
+  .label {
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    height: 35px;
+    background: #dddddd;
+    display: inline-block;
+  }
+  .label:hover {
+    background: #0D5DA9;
+  }
+  .label:active {
+    background: #9fa1a0;
+  }
+  .label:invalid + span {
+    color: #000000;
+  }
+  .label:valid + span {
+    color: #ffffff;
+  }
+
+  .images-grid-container{
+    width: 75vw;
+    height: auto;
+    margin-bottom: 80px;  
+    padding: 10px;
+  }
+  .file-box{
+    width: 170px;
+    height: 110px;
+    background-color: #F5F5F5;
+    margin: 10px;
+    margin-bottom: 30px;
+  }
+  .fcheckbox .checkbox{
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+  } 
+  .fcheckbox input{
+    width: 20px;
+    height: 20px;
+  } 
+  .img-thumbnail-container {
+     /* Điều chỉnh kích thước tối đa của div */
+    text-align: center; /* Canh giữa ảnh trong div */
+}
+.paginationjs{
+  justify-content: center;
+  align-items: center;
+}
+.img-thumbnail-container {
+  max-width: 100%; /* Điều chỉnh kích thước tối đa của div */
+  height: 100%; /* Đảm bảo tỷ lệ khung hình không bị méo */
+  text-align: center; /* Canh giữa ảnh trong div */
+}
+.img-thumbnail {
+  max-width: 100%; /* Điều chỉnh kích thước tối đa của ảnh */
+  max-height: 100%; /* Đảm bảo tỷ lệ khung hình không bị méo */
+  align-items: center;
+}
+.image-thumbnail{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
