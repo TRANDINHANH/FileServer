@@ -1,4 +1,4 @@
-const socket = io.connect('https://localhost:3005');
+const socket = io.connect('http://localhost:3005');
 const socketServer = io.connect('https://localhost:4000');
 
 let clientId = null;
@@ -7,7 +7,7 @@ socketServer.on('connect', () => {
     clientId = socketServer.id;
     console.log('socketServer của client là:', clientId);
     socketServer.emit('primary-clientId-from-cms', clientId);
-    // socket.emit('primary-clientId', clientId);
+    socket.emit('primary-clientId', clientId);
 });
 
 $('#button-open-image-manager').click(function (event) { 
@@ -21,6 +21,7 @@ function openImageManager() {
     width=1200,height=800,left=100,top=100`;
     
     imageManagerWindow = open(`https://localhost:3005`, 'test', params);  
+    imageManagerWindow.document.write("<p>This is 'myWindow'</p>");
 }
 
 socketServer.on('get-image-to-primary', (data) => {

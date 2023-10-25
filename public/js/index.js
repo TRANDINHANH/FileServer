@@ -2,9 +2,9 @@ const domainFile = 'http://localhost:3005';
 const domainSocketServer = 'http://localhost:4000';
 const socketdomainFile = io.connect(domainFile);
 
-const urlParams = new URLSearchParams(window.location.search);
-const clientId = urlParams.get('ID');
-console.log('ClientId từ cửa sổ chính là:', clientId);
+// const urlParams = new URLSearchParams(window.location.search);
+// const clientId = urlParams.get('ID');
+// console.log('ClientId từ cửa sổ chính là:', clientId);
 
 var zTree;
 var zNodes;
@@ -27,7 +27,7 @@ let currentViewGetInfo = {
     pageNumber:'1'  
 };
 let chooseDateForSearch = null;
-
+let imageDataInfo = null;
 
 
 function getNodeList() {
@@ -97,6 +97,7 @@ function loadDataPage(page, dataSourceUrlImages, formattedDate) {
                 
             </div>`);
         }
+        checkFlag();
     });
 }
 
@@ -164,6 +165,26 @@ function loadDataSearchPage(page, dataSourceUrlImages, formattedDate, searchName
     });
 }
 
+function checkFlag() {
+    var imgsSubmitButton = document.getElementById('images-count');
+    var imgContainers = document.querySelectorAll('.file-box');
+    // console.log(imgContainers);
+    // var button = document.createElement("button");
+    // button.classList.add('btn');    
+    // button.classList.add('btn-primary');
+    // button.innerHTML = "Tải lên các ảnh đã chọn";
+    // imgsSubmitButton.appendChild(button);
+    imgContainers.forEach(container => {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.classList.add('checkbox-overlay');
+        checkbox.classList.add('form-check-input');
+        checkbox.setAttribute('onclick', 'updateImageArray(event)');
+        container.appendChild(checkbox);
+        console.log("ok");
+    });
+}
+
 $('#btn-search').on('click', function() {
     loadImagesSearch(chooseDateForSearch)
 });
@@ -191,4 +212,23 @@ function getImageToClient(event) {
     console.log(imgSrc);
     socketdomainFile.emit('get-image-to-primary-from-file-server', imgSrc);
 
+}
+let selectedImages = [];
+
+function updateImageArray(event) {
+    const checkbox = event.target;
+    const imgSrc = checkbox.parentNode.querySelector('.img-thumbnail').src;
+
+    if (checkbox.checked) {
+        if (!selectedImages.includes(imgSrc)) {
+            selectedImages.push(imgSrc);
+        }
+    } else {
+        const index = selectedImages.indexOf(imgSrc);
+        if (index > -1) {
+            selectedImages.splice(index, 1);
+        }
+    }
+
+    console.log(selectedImages);
 }

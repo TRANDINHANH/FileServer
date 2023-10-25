@@ -121,6 +121,7 @@ label.label input[type="file"] {
     background-color: #F5F5F5;
     margin: 10px;
     margin-bottom: 30px;
+    position: relative;
   }
   .fcheckbox .checkbox{
     background-color: initial;
@@ -155,4 +156,23 @@ label.label input[type="file"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.checkbox-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.file-box input[type="checkbox"] {
+  -ms-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  padding: 15px;
+  margin-right: 5px;
+  border: 1px solid #0d5da9;
+}
+.img-thumbnail-container{
+  border:1px dashed #0d5da9;
+  border-radius: 5px;
 }

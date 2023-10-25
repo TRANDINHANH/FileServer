@@ -33,6 +33,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+let treeStructure = getDirectoryStructure('./file_uploads/images', 'images');
+let nodeList = null;
+let currentDay = new Date().getDate();
+
+
 function getDirectoryStructure(dirPath, nodeName) {
     let structure = { name: nodeName, open: true, children: [] };
     let files = fs.readdirSync(dirPath);
@@ -64,7 +69,7 @@ function getDirectoryStructure(dirPath, nodeName) {
     return structure;
 }
 
-let treeStructure = getDirectoryStructure('./file_uploads/images', 'images');
+
 function saveTreeStructure() {
     fs.writeFile('./file_uploads/tree_node_list.json', JSON.stringify(treeStructure), 'utf8', (err) => {
         if (err) {
@@ -75,8 +80,7 @@ function saveTreeStructure() {
 const filePathTreeNode = './file_uploads/tree_node_list.json';
 
 
-let nodeList = null;
-let currentDay = new Date().getDate();
+
 
 setInterval(() => {
     const now = new Date();
@@ -214,9 +218,10 @@ function GetImages(year, month, day, pageNumber, callback) {
 io.on('connection', (socket) => {
     console.log('Socket connected server. ' + socket.id);
 
-    socket.on('primary-clientId', (id) => {
-        console.log('primary-clientId: ' + id);
-        socketServer.emit('primary-clientId-from-file-server', id);
+    socket.on('primary-clientId', (cmsdata) => {
+        console.log('primary-clientId: ' + JSON.stringify(cmsdata.id));
+
+        socketServer.emit('primary-clientId-from-file-server', cmsdata);
     });
     socket.on('get-image-to-primary-from-file-server', (data) => {
         console.log(data);
